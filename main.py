@@ -21,24 +21,14 @@ legends = parse_legends('https://gainynv-news.ru/news/media/2021/12/6/100-i-1-za
 
 @bot.message_handler(commands=['legends'])
 def send_legends(message):
-    keyboard = types.InlineKeyboardMarkup()
+    keyboard = types.ReplyKeyboardMarkup()
     for i in range(1, len(legends) + 1):
-        keyboard.add(types.InlineKeyboardButton(str(i), callback_data=str(i)))
+        keyboard.add(types.KeyboardButton(str(i)))
     bot.send_message(message.chat.id, "Выберите номер факта:", reply_markup=keyboard)
 
-@bot.callback_query_handler(func=lambda call: True)
-def callback_handler(call):
-    if call.data.isdigit():
-        legend_index = int(call.data)
-        if 1 <= legend_index <= len(legends):
-            legend_text = legends[legend_index - 1]
-            if legend_text:
-                bot.send_message(call.message.chat.id, legend_text)
-            else:
-                bot.send_message(call.message.chat.id, "Ошибка: Текст легенды пуст")
-        else:
-            bot.send_message(call.message.chat.id, "Неправильный номер факта")
-    else:
-        bot.send_message(call.message.chat.id, "Неправильный формат ввода")
+@bot.message_handler(content_types=['text'])
+def send_fact(message):
+    bot.send_message(message.chat.id, legends[int(message.text) - 1])
+
 
 bot.polling()
