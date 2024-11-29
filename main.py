@@ -10,7 +10,7 @@ bot = telebot.TeleBot(TOKEN)
 # Обработка команды /start
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
-    bot.send_message(message.chat.id, "Приветствую, {0.first_name}! Я - бот, который будет отправлять тебе 100 и 1 факт про новый год".format(message.from_user))
+    bot.send_message(message.chat.id, "Приветствую, {0.first_name}! Я - бот, который будет отправлять тебе 100 и 1 факт про новый год\nКоманда: /fact".format(message.from_user))
 # Функция для парсинга фактов
 def parse_legends(url):
     response = requests.get(url)
