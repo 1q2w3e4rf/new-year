@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import requests
 import datetime
 
-TOKEN = ''
+TOKEN = '7902001335:AAHHAvzua8um6fylBuQgUWoHvuBdRM3NT2s'
 
 bot = telebot.TeleBot(TOKEN)
 
@@ -35,7 +35,7 @@ def time_until_new_year():
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
     """Отправка приветственного сообщения"""
-    bot.send_message(message.chat.id, f"Приветствую, {message.from_user.first_name}! Я - бот, который будет отправлять тебе 100 и 1 факт про новый год\nКоманда: /fact")
+    bot.send_message(message.chat.id, f"Приветствую, {message.from_user.first_name}! Я - бот, который будет отправлять тебе 100 и 1 факт про новый год\nКоманда: /fact \nКоманда: /time")
 
 # Обработка команды /time
 @bot.message_handler(commands=['time'])
