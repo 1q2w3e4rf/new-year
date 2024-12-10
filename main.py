@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import requests
 import datetime
 
-TOKEN = ''
+TOKEN = '6804594259:AAEu03onfNbMDd4HmS9-QvuWcOqxLfQl--I'
 
 bot = telebot.TeleBot(TOKEN)
 
@@ -23,7 +23,6 @@ def parse_legends(url):
 legends = parse_legends('https://gainynv-news.ru/news/media/2021/12/6/100-i-1-zabavnyih-faktov-pro-novyij-god/')
 
 def time_until_new_year():
-    """Calculates time until the next New Year."""
     now = datetime.datetime.now()
     next_year = now.year + 1
     new_year = datetime.datetime(next_year, 1, 1, 0, 0, 0)
